@@ -6,10 +6,10 @@
 sub=$1
 
 docker run -it --rm \
--v /data/projects/srndna/bids:/data:ro \
--v /data/projects/srndna/fmriprep:/out \
--v /data/projects/srndna/fs_license.txt:/opt/freesurfer/fs_license.txt \
--v /data/projects/srndna/scratch:/scratch \
+-v /data/projects/rutgers-r21/bids:/data:ro \
+-v /data/projects/rutgers-r21/fmriprep:/out \
+-v /data/projects/rutgers-r21/fs_license.txt:/opt/freesurfer/fs_license.txt \
+-v /data/projects/rutgers-r21/scratch:/scratch \
 -u $(id -u):$(id -g) \
 -w /scratch \
 poldracklab/fmriprep:1.1.4 \

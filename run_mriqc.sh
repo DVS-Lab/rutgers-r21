@@ -6,9 +6,9 @@
 sub=$1
 
 docker run -it --rm \
--v /data/projects/srndna/bids:/data:ro \
--v /data/projects/srndna/mriqc:/out \
--v /data/projects/srndna/scratch:/scratch \
+-v /data/projects/rutgers-r21/bids:/data:ro \
+-v /data/projects/rutgers-r21/mriqc:/out \
+-v /data/projects/rutgers-r21/scratch:/scratch \
 -u $(id -u):$(id -g) \
 -w /scratch \
 poldracklab/mriqc:0.12.1 \

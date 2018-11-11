@@ -7,7 +7,7 @@
 
 sub=$1
 
-bidsroot=/data/projects/srndna/bids
+bidsroot=/data/projects/rutgers-r21/bids
 
 #sudo chmod -R aug+rwx ${bidsroot}/sub-${sub}
 

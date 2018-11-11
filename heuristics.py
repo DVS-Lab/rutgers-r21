@@ -15,27 +15,25 @@ def infotodict(seqinfo):
     t2w = create_key('sub-{subject}/anat/sub-{subject}_T2w')
     mag = create_key('sub-{subject}/fmap/sub-{subject}_magnitude')
     phase = create_key('sub-{subject}/fmap/sub-{subject}_phasediff')
-    trust = create_key('sub-{subject}/func/sub-{subject}_task-trust_run-{item:02d}_bold')
-    ultimatum = create_key('sub-{subject}/func/sub-{subject}_task-ultimatum_run-{item:02d}_bold')
-    sharedreward = create_key('sub-{subject}/func/sub-{subject}_task-sharedreward_run-{item:02d}_bold')
+    reward = create_key('sub-{subject}/func/sub-{subject}_task-reward_run-{item:02d}_bold')
+    rest = create_key('sub-{subject}/func/sub-{subject}_task-rest_run-{item:02d}_bold')
 
-    info = {t1w: [], t2w: [], trust: [], ultimatum: [], mag: [], phase: [], sharedreward: []}
+
+    info = {t1w: [], t2w: [], rest: [], reward: [], mag: [], phase: []}
 
     for s in seqinfo:
-        if (s.dim3 == 72) and ('gre_field' in s.protocol_name) and ('NORM' in s.image_type):
+        if (s.dim3 == 72) and ('gre_field' in s.protocol_name):
             info[mag] = [s.series_id]
         if (s.dim3 == 36) and ('gre_field' in s.protocol_name):
             info[phase] = [s.series_id]
-        if (s.dim2 == 192) and ('T1w' in s.protocol_name) and ('NORM' in s.image_type):
+        if (s.dim2 == 256) and ('t1' in s.protocol_name):
             info[t1w] = [s.series_id]
-        if (s.dim2 == 192) and ('T2w' in s.protocol_name) and ('NORM' in s.image_type):
+        if (s.dim2 == 256) and ('t2' in s.protocol_name):
             info[t2w] = [s.series_id]
-        if (s.dim4 == 217) and ('trust' in s.protocol_name):
-            info[trust].append({'item': s.series_id})
-        if (s.dim4 == 202) and ('reward' in s.protocol_name):
-            info[sharedreward].append({'item': s.series_id})
-        if (s.dim4 == 200) and ('UG' in s.protocol_name):
-            info[ultimatum].append({'item': s.series_id})
+        if (s.dim4 > 225) and ('12ChannelCoil' in s.protocol_name):
+            info[reward].append({'item': s.series_id})
+        if (s.dim4 == 90) and ('Rest' in s.protocol_name):
+            info[rest].append({'item': s.series_id})
 
 
     return info
