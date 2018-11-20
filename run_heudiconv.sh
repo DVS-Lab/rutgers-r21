@@ -16,7 +16,7 @@ docker run --rm -it -v /data/projects/rutgers-r21:/data:ro \
 -u $(id -u):$(id -g) \
 nipy/heudiconv:latest \
 -d /data/dicoms/KLab-CardGame_sub-{subject}/*/*/*.dcm -s $sub \
--f /data/heuristics.py -c dcm2niix -b --minmeta -o /output
+-f /data/heuristics.py -c dcm2niix -b -o /output
 
 
 # FMAP_INTENDEDFOR  set the list of func filenames correctly here (relative paths starting from within sub-### folder)
