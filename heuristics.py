@@ -19,7 +19,7 @@ def infotodict(seqinfo):
     rest = create_key('sub-{subject}/func/sub-{subject}_task-rest_run-{item:02d}_bold')
 
 
-    info = {t1w: [], t2w: [], rest: [], reward: [], mag: [], phase: []}
+    info = {t1w: [], t2w: [], rest: [], cardgame: [], mag: [], phase: []}
 
     for s in seqinfo:
         if (s.dim3 == 72) and ('gre_field' in s.protocol_name):
