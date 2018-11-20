@@ -15,7 +15,7 @@ def infotodict(seqinfo):
     t2w = create_key('sub-{subject}/anat/sub-{subject}_T2w')
     mag = create_key('sub-{subject}/fmap/sub-{subject}_magnitude')
     phase = create_key('sub-{subject}/fmap/sub-{subject}_phasediff')
-    reward = create_key('sub-{subject}/func/sub-{subject}_task-reward_run-{item:02d}_bold')
+    cardgame = create_key('sub-{subject}/func/sub-{subject}_task-cardgame_run-{item:02d}_bold')
     rest = create_key('sub-{subject}/func/sub-{subject}_task-rest_run-{item:02d}_bold')
 
 
@@ -31,7 +31,7 @@ def infotodict(seqinfo):
         if (s.dim2 == 256) and ('t2' in s.protocol_name):
             info[t2w] = [s.series_id]
         if (s.dim4 > 225) and ('12ChannelCoil' in s.protocol_name):
-            info[reward].append({'item': s.series_id})
+            info[cardgame].append({'item': s.series_id})
         if (s.dim4 == 90) and ('Rest' in s.protocol_name):
             info[rest].append({'item': s.series_id})
 
