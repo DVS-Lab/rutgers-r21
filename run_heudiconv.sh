@@ -21,8 +21,8 @@ nipy/heudiconv:latest \
 
 # FMAP_INTENDEDFOR  set the list of func filenames correctly here (relative paths starting from within sub-### folder)
 # will have to adjust for subjects who don't have this. need a better way to do this
-FUNC01=\"func\\/sub-${sub}_task-reward_run-01_bold.nii.gz\"
-FUNC02=\"func\\/sub-${sub}_task-reward_run-02_bold.nii.gz\"
+FUNC01=\"func\\/sub-${sub}_task-cardgame_run-01_bold.nii.gz\"
+FUNC02=\"func\\/sub-${sub}_task-cardgame_run-02_bold.nii.gz\"
 FUNC03=\"func\\/sub-${sub}_task-rest_run-01_bold.nii.gz\"
 FUNC04=\"func\\/sub-${sub}_task-rest_run-02_bold.nii.gz\"
 FUNC05=\"func\\/sub-${sub}_task-rest_run-03_bold.nii.gz\"
