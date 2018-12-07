@@ -26,12 +26,12 @@ FUNC02=\"func\\/sub-${sub}_task-cardgame_run-02_bold.nii.gz\"
 FUNC03=\"func\\/sub-${sub}_task-rest_run-01_bold.nii.gz\"
 FUNC04=\"func\\/sub-${sub}_task-rest_run-02_bold.nii.gz\"
 FUNC05=\"func\\/sub-${sub}_task-rest_run-03_bold.nii.gz\"
-
+FUNC06=\"func\\/sub-${sub}_task-rest_run-04_bold.nii.gz\"
 
 #FMAP_INTENDEDFOR edit the line below so that it only includes as many FUNC_FILENAME as you need
 #the formatting of this line is kind of tricky with all the special characters: \n \t
 #be sure to include ,\n\t\t in between each ${FUNCFILENAME} (but not after the last one)
 #after the last ${FUNCFILENAME} in the line there should be the characters ],/g before the closing quotation mark (")
-sed -i "1s/{/{\n\t\"IntendedFor\": [${FUNC01},\n\t\t${FUNC02},\n\t\t${FUNC03},\n\t\t${FUNC04},\n\t\t${FUNC05}],/g" ${bidsroot}/sub-${sub}/fmap/sub-${sub}_*.json
+sed -i "1s/{/{\n\t\"IntendedFor\": [${FUNC01},\n\t\t${FUNC02},\n\t\t${FUNC03},\n\t\t${FUNC04},\n\t\t${FUNC05},\n\t\t${FUNC06}],/g" ${bidsroot}/sub-${sub}/fmap/sub-${sub}_*.json
 
 
