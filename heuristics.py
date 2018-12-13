@@ -30,9 +30,9 @@ def infotodict(seqinfo):
             info[t1w] = [s.series_id]
         if (s.dim2 == 256) and ('t2' in s.protocol_name):
             info[t2w] = [s.series_id]
-        if (s.dim4 > 225) and ('CardGame' in s.protocol_name):
+        if (s.dim4 > 175) and ('CardGame' in s.protocol_name):
             info[cardgame].append({'item': s.series_id})
-        if (s.dim4 > 225) and ('Rest' in s.protocol_name):
+        if (s.dim4 > 175) and ('Rest' in s.protocol_name):
             info[rest].append({'item': s.series_id})
 
 
