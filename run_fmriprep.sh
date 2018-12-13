@@ -3,7 +3,7 @@
 # usage: bash run_fmriprep.sh sub
 # example: bash run_fmriprep.sh 102
 
-#sub=$1
+sub=$1
 
 docker run -it --rm \
 -v /data/projects/rutgers-r21/bids:/data:ro \
@@ -14,5 +14,5 @@ docker run -it --rm \
 -w /scratch \
 poldracklab/fmriprep:1.1.4 \
 /data /out \
-participant --participant_label 180 207 \
---n_cpus 12 --use-aroma --fs-no-reconall --fs-license-file /opt/freesurfer/fs_license.txt -w /scratch
+participant --participant_label $sub \
+--use-aroma --fs-no-reconall --fs-license-file /opt/freesurfer/fs_license.txt -w /scratch
