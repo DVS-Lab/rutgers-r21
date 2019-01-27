@@ -1,18 +1,15 @@
-# example code for FMRIPREP
-# runs FMRIPREP on input subject
-# usage: bash run_fmriprep.sh sub
-# example: bash run_fmriprep.sh 102
+#!/bin/bash
 
-sub=$1
+maindir=/data/projects/rutgers-r21
 
 docker run -it --rm \
--v /data/projects/rutgers-r21/bids:/data:ro \
--v /data/projects/rutgers-r21/fmriprep:/out \
--v /data/projects/rutgers-r21/fs_license.txt:/opt/freesurfer/fs_license.txt \
--v /data/projects/rutgers-r21/scratch:/scratch \
+-v ${maindir}/ds000000:/data:ro \
+-v ${maindir}/derivatives:/out \
+-v ${maindir}/code/fs_license.txt:/opt/freesurfer/fs_license.txt \
+-v ${maindir}/derivatives/scratch:/scratch \
 -u $(id -u):$(id -g) \
 -w /scratch \
-poldracklab/fmriprep:1.1.4 \
+poldracklab/fmriprep:1.2.6-1 \
 /data /out \
-participant --participant_label $sub \
+participant \
 --use-aroma --fs-no-reconall --fs-license-file /opt/freesurfer/fs_license.txt -w /scratch

@@ -1,15 +1,8 @@
 #!/bin/bash
 
-umask 0000
-for subrun in "104 5" "105 5" "106 3" "107 5" "108 5" "109 2" "110 2" "112 5" "113 5"; do
+for subrun in 179 180 189 203 207 208 209 210 211 212 213 214 215 217; do
 
-  set -- $subrun
-  sub=$1
-  nruns=$2
-
-  bash run_heudiconv.sh $sub 1 $nruns
+  bash run_heudiconv.sh $sub
   bash run_pydeface.sh $sub
-  # bash run_fmriprep.sh $sub
-  # bash run_mriqc.sh $sub
 
 done
