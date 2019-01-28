@@ -22,7 +22,8 @@ def infotodict(seqinfo):
     info = {t1w: [], t2w: [], rest: [], cardgame: [], mag: [], phase: []}
 
     for s in seqinfo:
-        if (s.dim3 == 72) and ('gre_field' in s.protocol_name):
+    		#the mag images should always be 72 since it's concatenating two images with 36 slices
+        if (s.dim3 > 66 and s.dim3 < 73) and ('gre_field' in s.protocol_name):
             info[mag] = [s.series_id]
         if (s.dim3 == 36) and ('gre_field' in s.protocol_name):
             info[phase] = [s.series_id]
