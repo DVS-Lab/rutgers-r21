@@ -24,7 +24,7 @@ rm -rf ${bidsroot}/.heudiconv/${sub}
 docker run --rm -it -v ${maindir}:/data:ro \
 -v ${bidsroot}:/output \
 -u $(id -u):$(id -g) \
-nipy/heudiconv:latest \ #v0.5.3
+nipy/heudiconv:latest \
 -d /data/sourcedata/dicoms/{subject}_*_KlabCardGame/*/*.dcm -s $sub \
 -f /data/code/heuristics.py -c dcm2niix -b -o /output
 	
