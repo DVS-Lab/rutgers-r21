@@ -1,10 +1,12 @@
 #!/bin/bash
 
-maindir=/data/projects/rutgers-r21
+# set relative path to makes scripts more portable
+cd .. 
+maindir=`pwd`
 
 docker run -it --rm \
 -v $maindir/ds000000:/data:ro \
--v $maindir/derivatives:/out \
+-v $maindir/derivatives/mriqc:/out \
 -v $maindir/derivatives/scratch:/scratch \
 -u $(id -u):$(id -g) \
 -w /scratch \
