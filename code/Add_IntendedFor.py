@@ -21,10 +21,10 @@ subs=[x for x in files if x.startswith('sub')]
 for subj in subs:
 	print subj
 	#makes list of the json files to edit
-	files = os.path.abspath("%s/sub-%s/fmap"%(bidsdir,subj))
+	files = os.path.abspath("%s/%s/fmap"%(bidsdir,subj))
 	files_json = [i for i in files if i.endswith('.json')]
 	#makes list of the func files to add into the intended for field
-	files = ["func/%s"%(file) for file in os.listdir('%s/sub-%s/func'%(bidsdir,subj))]
+	files = ["func/%s"%(file) for file in os.listdir('%s/%s/func'%(bidsdir,subj))]
 	files_txt = [i for i in files if i.endswith('.nii.gz')]
 
 	#This could be done better but we open the json files ('r' for read only) as a dictionary add the Intended for key 
