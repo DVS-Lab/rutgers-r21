@@ -14,4 +14,5 @@ docker run -it --rm \
 poldracklab/fmriprep:1.2.6-1 \
 /data /out \
 participant \
---use-aroma --fs-no-reconall --fs-license-file /opt/freesurfer/fs_license.txt -w /scratch
+--use-aroma --use-syn-sdc --fs-no-reconall --fs-license-file /opt/freesurfer/fs_license.txt \
+-w /scratch
