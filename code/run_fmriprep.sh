@@ -13,6 +13,6 @@ docker run -it --rm \
 -w /scratch \
 poldracklab/fmriprep:1.2.6-1 \
 /data /out \
-participant \
+participant --participant_label 218 219 222 \
 --use-aroma --use-syn-sdc --fs-no-reconall --fs-license-file /opt/freesurfer/fs_license.txt \
 -w /scratch
