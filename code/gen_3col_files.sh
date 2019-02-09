@@ -3,7 +3,7 @@
 # make everything relative to root of the GitHub repository
 cd ..
 maindir=`pwd`
-baseout=${maindir}/fsl/EVfiles
+baseout=${maindir}/derivatives/fsl/EVfiles
 if [ ! -d ${baseout} ]; then
 	mkdir -p $baseout
 fi
