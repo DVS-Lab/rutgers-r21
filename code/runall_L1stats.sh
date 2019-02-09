@@ -7,7 +7,6 @@ while read a; do
 	sub=$1
 	nruns=$2
 
-	echo "$sub $nruns"
 		
 	for run in `seq $nruns`; do
 	
