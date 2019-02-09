@@ -10,7 +10,7 @@ fi
 
 sub=$1
 nruns=`ls -1 ${maindir}/ds000000/sub-${sub}/func/sub-${sub}_task-cardgame_run-0?_events.tsv | wc -l`
-
+echo -e "$sub\t$nruns" >> runcount.tsv
 for run in `seq $nruns`; do
 	bartfile=${maindir}/sourcedata/bids_tsv/sub-${sub}/func/sub-${sub}_task-cardgame_run-0${run}_events.tsv
 	if [ -e $bartfile ]; then
