@@ -1,23 +1,40 @@
 #!/usr/bin/env bash
 
+# make everything relative to root of the GitHub repository
+cd ..
 maindir=`pwd`
 
 sub=$1
 run=$2
+TASK=cardgame
 
-EVDIR=${maindir}/fsl/EVfiles/sub-${sub}/sharedreward/run-0${run}
-DATA=${maindir}/fmriprep/fmriprep/sub-${sub}/func/sub-${sub}_task-sharedreward_run-0${run}_bold_space-MNI152NLin2009cAsym_variant-smoothAROMAnonaggr_preproc.nii.gz
-MAINOUTPUT=${maindir}/fsl/sub-${sub}/
+
+# denoise data, if it doesn't exist
+cd ${maindir}/derivatives/fmriprep/sub-${sub}/func
+if [ ! -e sub-${sub}_task-${TASK}_run-0${run}_bold_space-MNI152NLin2009cAsym_variant-unsmoothedAROMAnonaggr_preproc.nii.gz ]; then
+	fsl_regfilt -i sub-${sub}_task-${TASK}_run-0${run}_bold_space-MNI152NLin2009cAsym_preproc.nii.gz \
+	    -f $(cat sub-${sub}_task-${TASK}_run-0${run}_bold_AROMAnoiseICs.csv) \
+	    -d sub-${sub}_task-${TASK}_run-0${run}_bold_MELODICmix.tsv \
+	    -o sub-${sub}_task-${TASK}_run-0${run}_bold_space-MNI152NLin2009cAsym_variant-unsmoothedAROMAnonaggr_preproc.nii.gz
+fi
+
+
+# delete incomplete output
+MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 mkdir -p $MAINOUTPUT
-OUTPUT=${MAINOUTPUT}/L1_task-sharedreward_model-01_type-act_run-0${run}
+OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-0${run}
 if [ -e ${OUTPUT}.feat/cluster_mask_zstat1.nii.gz ]; then
 	exit
 else
 	rm -rf ${OUTPUT}.feat
 fi
 
-ITEMPLATE=${maindir}/templates/L1_task-sharedreward_model-01_type-act.fsf
-OTEMPLATE=${MAINOUTPUT}/L1_task-sharedreward_model-01_type-act_run-0${run}.fsf
+EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/run-0${run}
+DATA=${maindir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TASK}_run-0${run}_bold_space-MNI152NLin2009cAsym_variant-unsmoothedAROMAnonaggr_preproc.nii.gz
+
+
+ITEMPLATE=${maindir}/templates/L1_template_m01.fsf
+OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-0${run}.fsf
 sed -e 's@OUTPUT@'$OUTPUT'@g' \
 -e 's@DATA@'$DATA'@g' \
 -e 's@EVDIR@'$EVDIR'@g' \
