@@ -25,7 +25,7 @@ if [ ! -e $OUTDATA ]; then
 	echo "denoising $INDATA"
 	fsl_regfilt -i $INDATA \
 	    -f $(cat ${DATADIR}/sub-${sub}_task-${TASK}_run-0${run}_AROMAnoiseICs.csv) \
-	    -d ${DATADIR}/sub-${sub}_task-${TASK}_run-0${run}_desc_MELODIC_mixing.tsv \
+	    -d ${DATADIR}/sub-${sub}_task-${TASK}_run-0${run}_desc-MELODIC_mixing.tsv \
 	    -o $OUTDATA
 fi
 
@@ -44,7 +44,7 @@ EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/run-0${run}
 NVOLUMES=`fslnvols ${OUTDATA}`
 
 
-ITEMPLATE=${maindir}/templates/L1_template_m01.fsf
+ITEMPLATE=${maindir}/code/templates/L1_template-m01.fsf
 OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-0${run}.fsf
 sed -e 's@OUTPUT@'$OUTPUT'@g' \
 -e 's@DATA@'$OUTDATA'@g' \
