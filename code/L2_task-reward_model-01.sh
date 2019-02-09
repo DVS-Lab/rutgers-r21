@@ -12,6 +12,7 @@ ncopes=9
 # delete incomplete output
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 OUTPUT=${MAINOUTPUT}/L2_task-${TASK}_model-01_type-act
+rm -rf ${OUTPUT}.gfeat
 if [ -e ${OUTPUT}.gfeat/cope${ncopes}.feat/cluster_mask_zstat1.nii.gz ]; then
 	exit
 else
@@ -19,8 +20,8 @@ else
 fi
 
 INPUT1=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-01.feat
-INPUT2=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-01.feat
-INPUT3=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-01.feat
+INPUT2=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-02.feat
+INPUT3=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-03.feat
 
 ITEMPLATE=${maindir}/code/templates/L2_copes-${ncopes}_runs-${nruns}.fsf
 OTEMPLATE=${MAINOUTPUT}/L2_task-${TASK}_model-01_type-act_copes-${ncopes}_runs-${nruns}.fsf
