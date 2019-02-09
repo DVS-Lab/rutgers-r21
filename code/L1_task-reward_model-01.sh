@@ -8,14 +8,25 @@ sub=$1
 run=$2
 TASK=cardgame
 
+#sub-189_task-cardgame_run-01_AROMAnoiseICs.csv
+#sub-189_task-cardgame_run-01_desc-confounds_regressors.tsv
+#sub-189/func/sub-189_task-cardgame_run-01_desc-MELODIC_mixing.tsv
+#sub-189/func/sub-189_task-cardgame_run-01_space-MNI152NLin2009cAsym_boldref.nii.gz
+#sub-189/func/sub-189_task-cardgame_run-01_space-MNI152NLin2009cAsym_desc-brain_mask.nii.gz
+#sub-189/func/sub-189_task-cardgame_run-01_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz
+#sub-189/func/sub-189_task-cardgame_run-01_space-MNI152NLin2009cAsym_desc-smoothAROMAnonaggr_bold.nii.gz
+
 
 # denoise data, if it doesn't exist
-cd ${maindir}/derivatives/fmriprep/sub-${sub}/func
-if [ ! -e sub-${sub}_task-${TASK}_run-0${run}_bold_space-MNI152NLin2009cAsym_variant-unsmoothedAROMAnonaggr_preproc.nii.gz ]; then
-	fsl_regfilt -i sub-${sub}_task-${TASK}_run-0${run}_bold_space-MNI152NLin2009cAsym_preproc.nii.gz \
-	    -f $(cat sub-${sub}_task-${TASK}_run-0${run}_bold_AROMAnoiseICs.csv) \
-	    -d sub-${sub}_task-${TASK}_run-0${run}_bold_MELODICmix.tsv \
-	    -o sub-${sub}_task-${TASK}_run-0${run}_bold_space-MNI152NLin2009cAsym_variant-unsmoothedAROMAnonaggr_preproc.nii.gz
+DATADIR=${maindir}/derivatives/fmriprep/sub-${sub}/func
+INDATA=${DATADIR}/sub-${sub}_task-${TASK}_run-0${run}_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz
+OUTDATA=${DATADIR}/sub-${sub}_task-${TASK}_run-0${run}_space-MNI152NLin2009cAsym_desc-unsmoothedAROMAnonaggr_preproc_bold.nii.gz
+if [ ! -e $OUTDATA ]; then
+	echo "denoising $INDATA"
+	fsl_regfilt -i $INDATA \
+	    -f $(cat ${DATADIR}/sub-${sub}_task-${TASK}_run-0${run}_AROMAnoiseICs.csv) \
+	    -d ${DATADIR}/sub-${sub}_task-${TASK}_run-0${run}_desc_MELODIC_mixing.tsv \
+	    -o $OUTDATA
 fi
 
 
@@ -30,14 +41,15 @@ else
 fi
 
 EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/run-0${run}
-DATA=${maindir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TASK}_run-0${run}_bold_space-MNI152NLin2009cAsym_variant-unsmoothedAROMAnonaggr_preproc.nii.gz
+NVOLUMES=`fslnvols ${OUTDATA}`
 
 
 ITEMPLATE=${maindir}/templates/L1_template_m01.fsf
 OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-0${run}.fsf
 sed -e 's@OUTPUT@'$OUTPUT'@g' \
--e 's@DATA@'$DATA'@g' \
+-e 's@DATA@'$OUTDATA'@g' \
 -e 's@EVDIR@'$EVDIR'@g' \
+-e 's@NVOLUMES@'$NVOLUMES'@g' \
 <$ITEMPLATE> $OTEMPLATE
 
 # runs feat on output template
