@@ -19,7 +19,7 @@ else
 	rm -rf ${OUTPUT}.feat
 fi
 
-DATA=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-0${run}/filtered_func_data.nii.gz
+DATA=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-0${run}.feat/filtered_func_data.nii.gz
 EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/run-0${run}
 NVOLUMES=`fslnvols ${DATA}`
 
@@ -30,7 +30,7 @@ fslmeants -i $DATA -o $PHYS -m $MASK
 ITEMPLATE=${maindir}/code/templates/L1_template-m01_ppi.fsf
 OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-ppi_run-0${run}.fsf
 sed -e 's@OUTPUT@'$OUTPUT'@g' \
--e 's@DATA@'$OUTDATA'@g' \
+-e 's@DATA@'$DATA'@g' \
 -e 's@EVDIR@'$EVDIR'@g' \
 -e 's@NVOLUMES@'$NVOLUMES'@g' \
 -e 's@PHYS@'$PHYS'@g' \
