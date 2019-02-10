@@ -12,7 +12,6 @@ maindir=`pwd`
 
 
 sub=$1
-
 #207 has the full 6
 #203 has the full 6 + one extra cardgame -- 7
 #180 has 6, with 2 cardgame and 3 rest --
@@ -27,4 +26,4 @@ docker run --rm -it -v ${maindir}:/data:ro \
 nipy/heudiconv:latest \
 -d /data/sourcedata/dicoms/{subject}_*_KlabCardGame/*/*.dcm -s $sub \
 -f /data/code/heuristics.py -c dcm2niix -b -o /output
-	
+
