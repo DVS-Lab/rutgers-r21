@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "sleeping for 2 hours at `date`..."
+sleep 2h
+
 # set relative path to makes scripts more portable
 cd .. 
 maindir=`pwd`
@@ -13,6 +16,8 @@ docker run -it --rm \
 -w /scratch \
 poldracklab/fmriprep:1.2.6-1 \
 /data /out \
-participant --participant_label 218 219 222 \
+participant \
 --use-aroma --use-syn-sdc --fs-no-reconall --fs-license-file /opt/freesurfer/fs_license.txt \
 -w /scratch
+
+# --participant_label 218 219 222
