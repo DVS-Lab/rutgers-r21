@@ -8,39 +8,32 @@ sub=$1
 run=$2
 TASK=cardgame
 
-# denoise data, if it doesn't exist
-DATADIR=${maindir}/derivatives/fmriprep/sub-${sub}/func
-INDATA=${DATADIR}/sub-${sub}_task-${TASK}_run-0${run}_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz
-OUTDATA=${DATADIR}/sub-${sub}_task-${TASK}_run-0${run}_space-MNI152NLin2009cAsym_desc-unsmoothedAROMAnonaggr_preproc_bold.nii.gz
-if [ ! -e $OUTDATA ]; then
-	echo "denoising $INDATA"
-	fsl_regfilt -i $INDATA \
-	    -f $(cat ${DATADIR}/sub-${sub}_task-${TASK}_run-0${run}_AROMAnoiseICs.csv) \
-	    -d ${DATADIR}/sub-${sub}_task-${TASK}_run-0${run}_desc-MELODIC_mixing.tsv \
-	    -o $OUTDATA
-fi
-
 
 # delete incomplete output
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 mkdir -p $MAINOUTPUT
-OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-0${run}
+OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-ppi_run-0${run}
 if [ -e ${OUTPUT}.feat/cluster_mask_zstat1.nii.gz ]; then
 	exit
 else
 	rm -rf ${OUTPUT}.feat
 fi
 
+DATA=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-0${run}/filtered_func_data.nii.gz
 EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/run-0${run}
-NVOLUMES=`fslnvols ${OUTDATA}`
+NVOLUMES=`fslnvols ${DATA}`
 
+PHYS=${MAINOUTPUT}/ts_task-cardgame_mask-NAcc_run-0${run}.txt
+MASK=${maindir}/masks/NAcc_resliced.nii.gz
+fslmeants -i $DATA -o $PHYS -m $MASK
 
-ITEMPLATE=${maindir}/code/templates/L1_template-m01.fsf
-OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-0${run}.fsf
+ITEMPLATE=${maindir}/code/templates/L1_template-m01_ppi.fsf
+OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-ppi_run-0${run}.fsf
 sed -e 's@OUTPUT@'$OUTPUT'@g' \
 -e 's@DATA@'$OUTDATA'@g' \
 -e 's@EVDIR@'$EVDIR'@g' \
 -e 's@NVOLUMES@'$NVOLUMES'@g' \
+-e 's@PHYS@'$PHYS'@g' \
 <$ITEMPLATE> $OTEMPLATE
 
 # runs feat on output template
@@ -54,7 +47,7 @@ ln -s $FSLDIR/etc/flirtsch/ident.mat ${OUTPUT}.feat/reg/standard2example_func.ma
 ln -s ${OUTPUT}.feat/mean_func.nii.gz ${OUTPUT}.feat/reg/standard.nii.gz
 
 # delete unused files
-# not deleting filtered_func_data bc that's input for PPI
 rm -rf ${OUTPUT}.feat/stats/res4d.nii.gz
 rm -rf ${OUTPUT}.feat/stats/corrections.nii.gz
 rm -rf ${OUTPUT}.feat/stats/threshac1.nii.gz
+rm -rf ${OUTPUT}.feat/filtered_func_data.nii.gz
