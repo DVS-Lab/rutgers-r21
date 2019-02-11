@@ -6,15 +6,15 @@ maindir=`pwd`
 
 
 TASK=cardgame
-ncopes=19
-TYPE=ppi
+ncopes=9
+TYPE=act
 
 for COPENUM in `seq $ncopes`; do
 	
 	cnum_padded=`zeropad ${COPENUM} 2`
 	
 	# delete incomplete output
-	MAINOUTPUT=${maindir}/derivatives/fsl/L3_n14_model-01
+	MAINOUTPUT=${maindir}/derivatives/fsl/L3_n14_model-01_FLAME1+2
 	if [ ! -d ${MAINOUTPUT} ]; then
 		mkdir $MAINOUTPUT
 	fi
