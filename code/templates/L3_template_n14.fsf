@@ -24,13 +24,13 @@ set fmri(relative_yn) 0
 set fmri(help_yn) 1
 
 # Run Featwatcher
-set fmri(featwatcher_yn) 1
+set fmri(featwatcher_yn) 0
 
 # Cleanup first-level standard-space images
 set fmri(sscleanup_yn) 0
 
 # Output directory
-set fmri(outputdir) "/data/projects/klab/rutgers-r21/derivatives/fsl/__tmpL3"
+set fmri(outputdir) "OUTPUT"
 
 # TR(s)
 set fmri(tr) 3
@@ -263,46 +263,46 @@ set fmri(paradigm_hp) 100
 set fmri(ncopeinputs) 0
 
 # 4D AVW data or FEAT directory (1)
-set feat_files(1) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-189/L2_task-cardgame_model-01_type-act.gfeat/cope5.feat/stats/cope1.nii.gz"
+set feat_files(1) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-189/L2_task-cardgame_model-01_type-TYPE.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (2)
-set feat_files(2) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-203/L2_task-cardgame_model-01_type-act.gfeat/cope5.feat/stats/cope1.nii.gz"
+set feat_files(2) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-203/L2_task-cardgame_model-01_type-TYPE.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (3)
-set feat_files(3) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-207/L2_task-cardgame_model-01_type-act.gfeat/cope5.feat/stats/cope1.nii.gz"
+set feat_files(3) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-207/L2_task-cardgame_model-01_type-TYPE.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (4)
-set feat_files(4) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-208/L2_task-cardgame_model-01_type-act.gfeat/cope5.feat/stats/cope1.nii.gz"
+set feat_files(4) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-208/L2_task-cardgame_model-01_type-TYPE.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (5)
-set feat_files(5) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-209/L2_task-cardgame_model-01_type-act.gfeat/cope5.feat/stats/cope1.nii.gz"
+set feat_files(5) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-209/L2_task-cardgame_model-01_type-TYPE.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (6)
-set feat_files(6) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-211/L2_task-cardgame_model-01_type-act.gfeat/cope5.feat/stats/cope1.nii.gz"
+set feat_files(6) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-211/L2_task-cardgame_model-01_type-TYPE.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (7)
-set feat_files(7) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-212/L2_task-cardgame_model-01_type-act.gfeat/cope5.feat/stats/cope1.nii.gz"
+set feat_files(7) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-212/L2_task-cardgame_model-01_type-TYPE.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (8)
-set feat_files(8) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-213/L2_task-cardgame_model-01_type-act.gfeat/cope5.feat/stats/cope1.nii.gz"
+set feat_files(8) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-213/L2_task-cardgame_model-01_type-TYPE.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (9)
-set feat_files(9) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-214/L2_task-cardgame_model-01_type-act.gfeat/cope5.feat/stats/cope1.nii.gz"
+set feat_files(9) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-214/L2_task-cardgame_model-01_type-TYPE.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (10)
-set feat_files(10) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-215/L2_task-cardgame_model-01_type-act.gfeat/cope5.feat/stats/cope1.nii.gz"
+set feat_files(10) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-215/L2_task-cardgame_model-01_type-TYPE.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (11)
-set feat_files(11) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-217/L2_task-cardgame_model-01_type-act.gfeat/cope5.feat/stats/cope1.nii.gz"
+set feat_files(11) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-217/L2_task-cardgame_model-01_type-TYPE.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (12)
-set feat_files(12) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-218/L2_task-cardgame_model-01_type-act.gfeat/cope5.feat/stats/cope1.nii.gz"
+set feat_files(12) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-218/L2_task-cardgame_model-01_type-TYPE.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (13)
-set feat_files(13) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-219/L2_task-cardgame_model-01_type-act.gfeat/cope5.feat/stats/cope1.nii.gz"
+set feat_files(13) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-219/L2_task-cardgame_model-01_type-TYPE.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # 4D AVW data or FEAT directory (14)
-set feat_files(14) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-222/L2_task-cardgame_model-01_type-act.gfeat/cope5.feat/stats/cope1.nii.gz"
+set feat_files(14) "/data/projects/klab/rutgers-r21/derivatives/fsl/sub-222/L2_task-cardgame_model-01_type-TYPE.gfeat/copeCOPENUM.feat/stats/cope1.nii.gz"
 
 # Add confound EVs text file
 set fmri(confoundevs) 0

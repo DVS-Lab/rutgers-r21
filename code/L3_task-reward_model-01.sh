@@ -7,27 +7,32 @@ maindir=`pwd`
 
 TASK=cardgame
 ncopes=9
+TYPE=act
 
-# delete incomplete output
-MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
-OUTPUT=${MAINOUTPUT}/L2_task-${TASK}_model-01_type-act
-rm -rf ${OUTPUT}.gfeat
-if [ -e ${OUTPUT}.gfeat/cope${ncopes}.feat/cluster_mask_zstat1.nii.gz ]; then
-	exit
-else
-	rm -rf ${OUTPUT}.gfeat
-fi
+for COPENUM in `seq $ncopes`; do
+	
+	cnum_padded=`zeropad ${COPENUM} 2`
+	
+	# delete incomplete output
+	MAINOUTPUT=${maindir}/derivatives/fsl/L3_n14_model-01
+	if [ ! -d ${MAINOUTPUT} ]; then
+		mkdir $MAINOUTPUT
+	fi
+	OUTPUT=${MAINOUTPUT}/L3_task-${TASK}_model-01_type-${TYPE}_cope-${cnum_padded}
+	if [ -e ${OUTPUT}.gfeat/cope${ncopes}.feat/cluster_mask_zstat1.nii.gz ]; then
+		exit
+	else
+		rm -rf ${OUTPUT}.gfeat
+	fi
+	
+	ITEMPLATE=${maindir}/code/templates/L3_template_n14.fsf
+	OTEMPLATE=${MAINOUTPUT}/L3_task-${TASK}_model-01_type-${TYPE}_cope-${cnum_padded}.fsf
+	sed -e 's@OUTPUT@'$OUTPUT'@g' \
+	-e 's@TYPE@'$TYPE'@g' \
+	-e 's@COPENUM@'$COPENUM'@g' \
+	<$ITEMPLATE> $OTEMPLATE
+	
+	# runs feat on output template
+	feat $OTEMPLATE &
 
-
-ITEMPLATE=${maindir}/code/templates/L2_copes-${ncopes}_runs-${nruns}.fsf
-OTEMPLATE=${MAINOUTPUT}/L2_task-${TASK}_model-01_type-act_copes-${ncopes}_runs-${nruns}.fsf
-sed -e 's@OUTPUT@'$OUTPUT'@g' \
--e 's@INPUT1@'$INPUT1'@g' \
--e 's@INPUT2@'$INPUT2'@g' \
--e 's@INPUT3@'$INPUT3'@g' \
-<$ITEMPLATE> $OTEMPLATE
-
-# runs feat on output template
-feat $OTEMPLATE
-
-
+done
