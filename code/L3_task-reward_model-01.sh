@@ -6,8 +6,8 @@ maindir=`pwd`
 
 
 TASK=cardgame
-ncopes=9
-TYPE=act
+ncopes=19
+TYPE=ppi
 
 for COPENUM in `seq $ncopes`; do
 	
