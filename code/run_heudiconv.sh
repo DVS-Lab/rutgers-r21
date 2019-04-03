@@ -24,6 +24,6 @@ docker run --rm -it -v ${maindir}:/data:ro \
 -v ${bidsroot}:/output \
 -u $(id -u):$(id -g) \
 nipy/heudiconv:latest \
--d /data/sourcedata/sub-{subject}/sub-{subject}/*/*.dcm -s $sub \
+-d /data/sourcedata/sub-{subject}/{subject}.dicom/*/*.dcm -s $sub \
 -f /data/code/heuristics.py -c dcm2niix -b -o /output
 
