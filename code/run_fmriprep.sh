@@ -1,14 +1,11 @@
 #!/bin/bash
 
-echo "sleeping for 2 hours at `date`..."
-sleep 2h
-
 # set relative path to makes scripts more portable
 cd .. 
 maindir=`pwd`
 
 docker run -it --rm \
--v ${maindir}/ds000000:/data:ro \
+-v ${maindir}/ds000001:/data:ro \
 -v ${maindir}/derivatives:/out \
 -v ${maindir}/code/fs_license.txt:/opt/freesurfer/fs_license.txt \
 -v ${maindir}/derivatives/scratch:/scratch \

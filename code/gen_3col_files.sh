@@ -9,15 +9,15 @@ if [ ! -d ${baseout} ]; then
 fi
 
 sub=$1
-nruns=`ls -1 ${maindir}/ds000000/sub-${sub}/func/sub-${sub}_task-cardgame_run-0?_events.tsv | wc -l`
+nruns=`ls -1 ${maindir}/ds000001/sub-${sub}/func/sub-${sub}_task-cardgame_run-0?_events.tsv | wc -l`
 echo -e "$sub\t$nruns" >> runcount.tsv
 for run in `seq $nruns`; do
-	bartfile=${maindir}/sourcedata/bids_tsv/sub-${sub}/func/sub-${sub}_task-cardgame_run-0${run}_events.tsv
+	bartfile=${maindir}/sourcedata/sub-${sub}/sub-${sub}_task-cardgame_run-0${run}_events.tsv
 	if [ -e $bartfile ]; then
 		nlines=`cat $bartfile | wc -l`
 		if [ $nlines -gt 1 ]; then
 			# replace HeuDiConv *.tsv with real *.tsv file
-			input=${maindir}/ds000000/sub-${sub}/func/sub-${sub}_task-cardgame_run-0${run}_events.tsv
+			input=${maindir}/ds000001/sub-${sub}/func/sub-${sub}_task-cardgame_run-0${run}_events.tsv
 			cp $bartfile ${input}
 			output=${baseout}/sub-${sub}
 			mkdir -p $output

@@ -4,7 +4,7 @@
 cd .. 
 maindir=`pwd`
 
-bidsroot=${maindir}/ds000000
+bidsroot=${maindir}/ds000001
 
 sub=$1
 
