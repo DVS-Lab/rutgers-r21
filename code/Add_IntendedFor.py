@@ -12,8 +12,8 @@ import subprocess
 
 #gets current working directory If your bids is in the same folder as this file this should work for everyone
 cwd = os.getcwd() 
-bidsdir="/%s/../ds000000"%(cwd)
-
+bidsdir="/data/projects/klab/rutgers-r21/ds000001"
+print bidsdir
 
 # In[2]:
 files= os.listdir(bidsdir)
