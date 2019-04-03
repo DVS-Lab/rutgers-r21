@@ -47,4 +47,5 @@ scratch
 
 derivatives
 sourcedata
+.ipynb_checkpoints
 ds*
