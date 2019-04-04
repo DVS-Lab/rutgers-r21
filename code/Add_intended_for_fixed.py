@@ -47,16 +47,11 @@ for subj in subs:
     for i in range(len(files_json)):
         with open(files_json[i],'r')as f:
             data=json.load(f)
-            data["IntendedFor"]=[files_txt]
+            data["IntendedFor"]=files_txt
             f.close
         with open(files_json[i],'w')as f:
             json.dump(data,f,indent=4,sort_keys=True)
             f.close
 
 
-# In[7]:
-
-
-files = os.path.abspath("%s/%s/fmap"%(bidsdir,subj))
-files
 
