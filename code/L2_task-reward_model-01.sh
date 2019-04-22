@@ -17,6 +17,7 @@ if [ -e ${OUTPUT}.gfeat/cope${ncopes}.feat/cluster_mask_zstat1.nii.gz ]; then
 	exit
 else
 	rm -rf ${OUTPUT}.gfeat
+	echo ${OUTPUT} >> check_L2.log
 fi
 
 INPUT1=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-01.feat

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -rf ../check_L1.log
 
 cat runcount.tsv | 
 while read a; do 
@@ -13,7 +14,7 @@ while read a; do
 	  	#Manages the number of jobs and cores
 	  	#SCRIPTNAME=L1_task-reward_model-01.sh
 	  	SCRIPTNAME=L1_task-reward_model-01_ppi.sh
-	  	NCORES=32
+	  	NCORES=24
 	  	while [ $(ps -ef | grep -v grep | grep $SCRIPTNAME | wc -l) -ge $NCORES ]; do
 	 		sleep 1s
 	  	done

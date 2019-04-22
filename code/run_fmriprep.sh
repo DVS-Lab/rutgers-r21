@@ -13,8 +13,9 @@ docker run -it --rm \
 -w /scratch \
 poldracklab/fmriprep:1.2.6-1 \
 /data /out \
-participant \
+participant --participant_label 226 233 235 237 238 \
 --use-aroma --fs-no-reconall --fs-license-file /opt/freesurfer/fs_license.txt \
 -w /scratch
 
-# --participant_label 218 219 222
+# --participant_label 216 230 232
+# missing T1w for sub-238?

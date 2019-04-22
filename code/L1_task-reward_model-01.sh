@@ -38,6 +38,7 @@ if [ -e ${OUTPUT}.feat/cluster_mask_zstat1.nii.gz ]; then
 	exit
 else
 	rm -rf ${OUTPUT}.feat
+	echo ${OUTPUT} >> check_L1.log
 fi
 
 EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/run-0${run}

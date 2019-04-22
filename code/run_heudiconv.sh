@@ -20,7 +20,8 @@ bidsroot=${maindir}/ds000001
 rm -rf ${bidsroot}/sub-${sub}
 rm -rf ${bidsroot}/.heudiconv/${sub}
 
-docker run --rm -it -v ${maindir}:/data:ro \
+# docker run --rm -it -v ${maindir}:/data:ro \
+docker run --rm -v ${maindir}:/data:ro \
 -v ${bidsroot}:/output \
 -u $(id -u):$(id -g) \
 nipy/heudiconv:latest \

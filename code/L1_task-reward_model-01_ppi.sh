@@ -17,6 +17,7 @@ if [ -e ${OUTPUT}.feat/cluster_mask_zstat1.nii.gz ]; then
 	exit
 else
 	rm -rf ${OUTPUT}.feat
+	echo ${OUTPUT} >> check_L1.log
 fi
 
 DATA=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-0${run}.feat/filtered_func_data.nii.gz
