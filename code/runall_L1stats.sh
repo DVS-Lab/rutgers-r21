@@ -12,8 +12,8 @@ while read a; do
 	for run in `seq $nruns`; do
 	
 	  	#Manages the number of jobs and cores
-	  	SCRIPTNAME=L1_task-reward_model-01.sh
-	  	#SCRIPTNAME=L1_task-reward_model-01_ppi.sh
+	  	#SCRIPTNAME=L1_task-reward_model-01.sh
+	  	SCRIPTNAME=L1_task-reward_model-01_ppi.sh
 	  	NCORES=24
 	  	while [ $(ps -ef | grep -v grep | grep $SCRIPTNAME | wc -l) -ge $NCORES ]; do
 	 		sleep 1s
