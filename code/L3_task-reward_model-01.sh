@@ -4,6 +4,7 @@
 cd ..
 maindir=`pwd`
 
+MAINOUTPUT=${maindir}/derivatives/fsl/L3_n27_model-01_FLAME1+2_exclusions
 
 TASK=cardgame
 ncopes=19
@@ -14,7 +15,6 @@ for COPENUM in `seq $ncopes`; do
 	cnum_padded=`zeropad ${COPENUM} 2`
 	
 	# delete incomplete output
-	MAINOUTPUT=${maindir}/derivatives/fsl/L3_n31_model-01_FLAME1+2
 	if [ ! -d ${MAINOUTPUT} ]; then
 		mkdir $MAINOUTPUT
 	fi
@@ -25,7 +25,7 @@ for COPENUM in `seq $ncopes`; do
 		rm -rf ${OUTPUT}.gfeat
 	fi
 	
-	ITEMPLATE=${maindir}/code/templates/L3_template_n31.fsf
+	ITEMPLATE=${maindir}/code/templates/L3_template_n27.fsf
 	OTEMPLATE=${MAINOUTPUT}/L3_task-${TASK}_model-01_type-${TYPE}_cope-${cnum_padded}.fsf
 	sed -e 's@OUTPUT@'$OUTPUT'@g' \
 	-e 's@TYPE@'$TYPE'@g' \
@@ -46,7 +46,6 @@ for COPENUM in `seq $ncopes`; do
 	cnum_padded=`zeropad ${COPENUM} 2`
 	
 	# delete incomplete output
-	MAINOUTPUT=${maindir}/derivatives/fsl/L3_n31_model-01_FLAME1+2
 	if [ ! -d ${MAINOUTPUT} ]; then
 		mkdir $MAINOUTPUT
 	fi
@@ -57,7 +56,7 @@ for COPENUM in `seq $ncopes`; do
 		rm -rf ${OUTPUT}.gfeat
 	fi
 	
-	ITEMPLATE=${maindir}/code/templates/L3_template_n31.fsf
+	ITEMPLATE=${maindir}/code/templates/L3_template_n27.fsf
 	OTEMPLATE=${MAINOUTPUT}/L3_task-${TASK}_model-01_type-${TYPE}_cope-${cnum_padded}.fsf
 	sed -e 's@OUTPUT@'$OUTPUT'@g' \
 	-e 's@TYPE@'$TYPE'@g' \
