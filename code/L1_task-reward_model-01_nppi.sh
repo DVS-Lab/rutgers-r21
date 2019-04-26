@@ -13,7 +13,7 @@ TASK=cardgame
 # delete incomplete output
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 mkdir -p $MAINOUTPUT
-OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-nppi_run-0${run}
+OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-nppi-${ppi}_run-0${run}
 if [ -e ${OUTPUT}.feat/cluster_mask_zstat1.nii.gz ]; then
 	exit
 else
@@ -43,7 +43,7 @@ else
 	OTHERNET=$DMN
 fi
 
-ITEMPLATE=${maindir}/templates/L1_task-${TASK}_model-01_type-nppi.fsf
+ITEMPLATE=${maindir}/templates/L1_template-m01_netppi.fsf
 OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-01_nppi-${ppi}_run-0${run}.fsf
 sed -e 's@OUTPUT@'$OUTPUT'@g' \
 -e 's@DATA@'$DATA'@g' \
