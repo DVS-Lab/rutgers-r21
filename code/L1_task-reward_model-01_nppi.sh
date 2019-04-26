@@ -25,7 +25,7 @@ DATA=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-0${run}.feat/filtered_f
 EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/run-0${run}
 NVOLUMES=`fslnvols ${DATA}`
 
-MASK=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-0${run}_sm-${sm}.feat/mask
+MASK=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-0${run}.feat/mask
 for net in `seq 0 9`; do
 	NET=${maindir}/masks/nets/rPNAS_2mm_net000${net}.nii
 	TSFILE=${MAINOUTPUT}/ts_task-${TASK}_net000${net}_run-0${run}.txt
