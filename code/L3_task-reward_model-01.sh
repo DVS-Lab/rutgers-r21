@@ -8,9 +8,11 @@ MAINOUTPUT=${maindir}/derivatives/fsl/L3_n27_model-01_FLAME1+2_exclusions
 
 TASK=cardgame
 ncopes=19
-TYPE=ppi
+TYPE=nppi-ecn
 
-for COPENUM in `seq $ncopes`; do
+#5 6 7 8 9 10 15 16 17 18 19
+
+for COPENUM in 5 6 7 8 9 10 15 16 17 18 19; do
 	
 	cnum_padded=`zeropad ${COPENUM} 2`
 	
@@ -19,7 +21,7 @@ for COPENUM in `seq $ncopes`; do
 		mkdir $MAINOUTPUT
 	fi
 	OUTPUT=${MAINOUTPUT}/L3_task-${TASK}_model-01_type-${TYPE}_cope-${cnum_padded}
-	if [ -e ${OUTPUT}.gfeat/cope${ncopes}.feat/cluster_mask_zstat1.nii.gz ]; then
+	if [ -e ${OUTPUT}.gfeat/cope1.feat/cluster_mask_zstat1.nii.gz ]; then
 		exit
 	else
 		rm -rf ${OUTPUT}.gfeat
@@ -50,7 +52,7 @@ for COPENUM in `seq $ncopes`; do
 		mkdir $MAINOUTPUT
 	fi
 	OUTPUT=${MAINOUTPUT}/L3_task-${TASK}_model-01_type-${TYPE}_cope-${cnum_padded}
-	if [ -e ${OUTPUT}.gfeat/cope${ncopes}.feat/cluster_mask_zstat1.nii.gz ]; then
+	if [ -e ${OUTPUT}.gfeat/cope1.feat/cluster_mask_zstat1.nii.gz ]; then
 		exit
 	else
 		rm -rf ${OUTPUT}.gfeat
@@ -65,5 +67,10 @@ for COPENUM in `seq $ncopes`; do
 	
 	# runs feat on output template
 	feat $OTEMPLATE &
-	sleep 1
+	#cd ${OUTPUT}.gfeat/cope1.feat
+	#randomise -i filtered_func_data.nii.gz -o randomise -d design.mat -t design.con -m mask.nii.gz -T -c 2.3 -n 10000
+
 done
+
+#randomise -i filtered_func_data.nii.gz -o randomise -d design.mat -t design.con -m mask.nii.gz -T -c 3.1 -n 10000
+#randomise_parallel -i filtered_func_data.nii.gz -o randomise -d design.mat -t design.con -m mask.nii.gz -T -c 3.1 -n 10000
