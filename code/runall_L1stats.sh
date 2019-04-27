@@ -15,7 +15,7 @@ for ppi in dmn ecn; do
 		  	#SCRIPTNAME=L1_task-reward_model-01.sh
 		  	#SCRIPTNAME=L1_task-reward_model-01_ppi.sh
 		   SCRIPTNAME=L1_task-reward_model-01_nppi.sh
-		  	NCORES=24
+		  	NCORES=38
 		  	while [ $(ps -ef | grep -v grep | grep $SCRIPTNAME | wc -l) -ge $NCORES ]; do
 		 		sleep 1s
 		  	done

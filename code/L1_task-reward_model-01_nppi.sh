@@ -43,13 +43,15 @@ else
 	OTHERNET=$DMN
 fi
 
-ITEMPLATE=${maindir}/templates/L1_template-m01_netppi.fsf
+NVOLUMES=`fslnvols ${DATA}`
+ITEMPLATE=${maindir}/code/templates/L1_template-m01_netppi.fsf
 OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-01_nppi-${ppi}_run-0${run}.fsf
 sed -e 's@OUTPUT@'$OUTPUT'@g' \
 -e 's@DATA@'$DATA'@g' \
 -e 's@EVDIR@'$EVDIR'@g' \
 -e 's@MAINNET@'$MAINNET'@g' \
 -e 's@OTHERNET@'$OTHERNET'@g' \
+-e 's@NVOLUMES@'$NVOLUMES'@g' \
 -e 's@INPUT0@'$INPUT0'@g' \
 -e 's@INPUT1@'$INPUT1'@g' \
 -e 's@INPUT2@'$INPUT2'@g' \
