@@ -3,7 +3,7 @@
 
 rm -rf ../check_L2.log
 
-for ppi in dmn ecn; do
+for ppi in TPJ VLPFC; do
 
 	cat runcount.tsv | 
 	while read a; do 
@@ -16,8 +16,8 @@ for ppi in dmn ecn; do
 	
 	  	#Manages the number of jobs and cores
 	  	#SCRIPTNAME=L2_task-reward_model-01.sh
-	  	#SCRIPTNAME=L2_task-reward_model-01_ppi.sh
-	  	SCRIPTNAME=L2_task-reward_model-01_nppi.sh
+	  	SCRIPTNAME=L2_task-reward_model-01_ppi.sh
+	  	#SCRIPTNAME=L2_task-reward_model-01_nppi.sh
 	  	NCORES=32
 	  	while [ $(ps -ef | grep -v grep | grep $SCRIPTNAME | wc -l) -ge $NCORES ]; do
 	 		sleep 1s

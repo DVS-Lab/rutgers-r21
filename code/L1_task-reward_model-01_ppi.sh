@@ -6,13 +6,14 @@ maindir=`pwd`
 
 sub=$1
 run=$2
+ppi=$3
 TASK=cardgame
 
 
 # delete incomplete output
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 mkdir -p $MAINOUTPUT
-OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-ppi_run-0${run}
+OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-ppi-${ppi}_run-0${run}_sm-6
 if [ -e ${OUTPUT}.feat/cluster_mask_zstat1.nii.gz ]; then
 	exit
 else
@@ -20,16 +21,16 @@ else
 	echo ${OUTPUT} >> check_L1.log
 fi
 
-DATA=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-0${run}.feat/filtered_func_data.nii.gz
+DATA=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-act_run-0${run}_sm-6.feat/filtered_func_data.nii.gz
 EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/run-0${run}
 NVOLUMES=`fslnvols ${DATA}`
 
-PHYS=${MAINOUTPUT}/ts_task-cardgame_mask-NAcc_run-0${run}.txt
-MASK=${maindir}/masks/NAcc_resliced.nii.gz
+PHYS=${MAINOUTPUT}/ts_task-cardgame_mask-${ppi}_run-0${run}.txt
+MASK=${maindir}/masks/${ppi}.nii.gz
 fslmeants -i $DATA -o $PHYS -m $MASK
 
 ITEMPLATE=${maindir}/code/templates/L1_template-m01_ppi.fsf
-OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-ppi_run-0${run}.fsf
+OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-ppi-${ppi}_run-0${run}.fsf
 sed -e 's@OUTPUT@'$OUTPUT'@g' \
 -e 's@DATA@'$DATA'@g' \
 -e 's@EVDIR@'$EVDIR'@g' \

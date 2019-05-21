@@ -8,10 +8,11 @@ sub=$1
 nruns=$2
 TASK=cardgame
 ncopes=19
+ppi=$3
 
 # delete incomplete output
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
-OUTPUT=${MAINOUTPUT}/L2_task-${TASK}_model-01_type-ppi
+OUTPUT=${MAINOUTPUT}/L2_task-${TASK}_model-01_type-ppi-${ppi}
 if [ -e ${OUTPUT}.gfeat/cope${ncopes}.feat/cluster_mask_zstat1.nii.gz ]; then
 	exit
 else
@@ -19,10 +20,10 @@ else
 	echo ${OUTPUT} >> check_L2.log
 fi
 
-INPUT1=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-ppi_run-01.feat
-INPUT2=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-ppi_run-02.feat
-INPUT3=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-ppi_run-03.feat
-INPUT4=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-ppi_run-04.feat
+INPUT1=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-ppi-${ppi}_run-01_sm-6.feat
+INPUT2=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-ppi-${ppi}_run-02_sm-6.feat
+INPUT3=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-ppi-${ppi}_run-03_sm-6.feat
+INPUT4=${MAINOUTPUT}/L1_task-${TASK}_model-01_type-ppi-${ppi}_run-04_sm-6.feat
 
 ITEMPLATE=${maindir}/code/templates/L2_copes-${ncopes}_runs-${nruns}.fsf
 OTEMPLATE=${MAINOUTPUT}/L2_task-${TASK}_model-01_type-ppi_copes-${ncopes}_runs-${nruns}.fsf
