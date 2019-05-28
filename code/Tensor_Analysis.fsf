@@ -1,9 +1,9 @@
 
 # FEAT version number
-set fmri(version) 6.00
+set fmri(version) 3.14
 
 # Are we in MELODIC?
-set fmri(inmelodic) 0
+set fmri(inmelodic) 1
 
 # Analysis level
 # 1 : First-level analysis
@@ -15,7 +15,7 @@ set fmri(level) 1
 # 7 : Full first-level analysis
 # 1 : Pre-processing
 # 2 : Statistics
-set fmri(analysis) 1
+set fmri(analysis) 7
 
 # Use relative filenames
 set fmri(relative_yn) 0
@@ -30,22 +30,22 @@ set fmri(featwatcher_yn) 0
 set fmri(sscleanup_yn) 0
 
 # Output directory
-set fmri(outputdir) OUTPUT
+set fmri(outputdir) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/Tensor_output.ica"
 
 # TR(s)
 set fmri(tr) 2.000000 
 
 # Total volumes
-set fmri(npts) NVOLUMES
+set fmri(npts) 960
 
 # Delete volumes
-set fmri(ndelete) 8
+set fmri(ndelete) 0
 
 # Perfusion tag/control order
 set fmri(tagfirst) 1
 
 # Number of first-level analyses
-set fmri(multiple) 1
+set fmri(multiple) 22
 
 # Higher-level input type
 # 1 : Inputs are lower-level FEAT directories
@@ -103,19 +103,19 @@ set fmri(st) 0
 set fmri(st_file) ""
 
 # BET brain extraction
-set fmri(bet_yn) 1
+set fmri(bet_yn) 0
 
 # Spatial smoothing FWHM (mm)
-set fmri(smooth) 4.0
+set fmri(smooth) 5
 
 # Intensity normalization
-set fmri(norm_yn) 1
+set fmri(norm_yn) 0
 
 # Perfusion subtraction
 set fmri(perfsub_yn) 0
 
 # Highpass temporal filtering
-set fmri(temphp_yn) 1
+set fmri(temphp_yn) 0
 
 # Lowpass temporal filtering
 set fmri(templp_yn) 0
@@ -124,10 +124,10 @@ set fmri(templp_yn) 0
 set fmri(melodic_yn) 0
 
 # Carry out main stats?
-set fmri(stats_yn) 0
+set fmri(stats_yn) 1
 
 # Carry out prewhitening?
-set fmri(prewhiten_yn) 0
+set fmri(prewhiten_yn) 1
 
 # Add motion parameters to model
 # 0 : No
@@ -148,7 +148,7 @@ set fmri(mixed_yn) 2
 
 # Number of EVs
 set fmri(evs_orig) 1
-set fmri(evs_real) 2
+set fmri(evs_real) 1
 set fmri(evs_vox) 0
 
 # Number of contrasts
@@ -163,7 +163,7 @@ set fmri(nftests_real) 0
 set fmri(constcol) 0
 
 # Carry out post-stats steps?
-set fmri(poststats_yn) 0
+set fmri(poststats_yn) 1
 
 # Pre-threshold masking?
 set fmri(threshmask) ""
@@ -233,7 +233,7 @@ set fmri(reghighres_search) 90
 set fmri(reghighres_dof) BBR
 
 # Registration to standard image?
-set fmri(regstandard_yn) 0
+set fmri(regstandard_yn) 1
 
 # Use alternate reference images?
 set fmri(alternateReference_yn) 0
@@ -245,10 +245,10 @@ set fmri(regstandard) "/usr/share/fsl/5.0/data/standard/MNI152_T1_2mm_brain"
 # 0   : No search
 # 90  : Normal search
 # 180 : Full search
-set fmri(regstandard_search) 90
+set fmri(regstandard_search) 0
 
 # Degrees of Freedom for registration to standard space
-set fmri(regstandard_dof) 12
+set fmri(regstandard_dof) 3
 
 # Do nonlinear registration from structural to standard space?
 set fmri(regstandard_nonlinear_yn) 0
@@ -257,111 +257,116 @@ set fmri(regstandard_nonlinear_yn) 0
 set fmri(regstandard_nonlinear_warpres) 10 
 
 # High pass filter cutoff
-set fmri(paradigm_hp) 60
+set fmri(paradigm_hp) 100
 
 # Total voxels
-set fmri(totalVoxels) 39951360
+set fmri(totalVoxels) 312312000
 
 
 # Number of lower-level copes feeding into higher-level analysis
 set fmri(ncopeinputs) 0
 
 # 4D AVW data or FEAT directory (1)
-set feat_files(1) INPUTDATA
+set feat_files(1) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-217/sub-217_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (2)
+set feat_files(2) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-214/sub-214_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (3)
+set feat_files(3) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-215/sub-215_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (4)
+set feat_files(4) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-213/sub-213_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (5)
+set feat_files(5) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-210/sub-210_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (6)
+set feat_files(6) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-211/sub-211_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (7)
+set feat_files(7) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-218/sub-218_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (8)
+set feat_files(8) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-219/sub-219_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (9)
+set feat_files(9) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-234/sub-234_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (10)
+set feat_files(10) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-231/sub-231_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (11)
+set feat_files(11) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-189/sub-189_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (12)
+set feat_files(12) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-203/sub-203_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (13)
+set feat_files(13) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-207/sub-207_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (14)
+set feat_files(14) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-209/sub-209_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (15)
+set feat_files(15) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-208/sub-208_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (16)
+set feat_files(16) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-228/sub-228_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (17)
+set feat_files(17) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-227/sub-227_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (18)
+set feat_files(18) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-225/sub-225_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (19)
+set feat_files(19) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-223/sub-223_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (20)
+set feat_files(20) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-222/sub-222_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (21)
+set feat_files(21) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-221/sub-221_fullrest-stim-BRTSHVL"
+
+# 4D AVW data or FEAT directory (22)
+set feat_files(22) "/data/projects/klab/rutgers-r21/derivatives/Tensor_ICA/sub-220/sub-220_fullrest-stim-BRTSHVL"
 
 # Add confound EVs text file
 set fmri(confoundevs) 0
 
-# EV 1 title
-set fmri(evtitle1) ""
+# Resampling resolution
+set fmri(regstandard_res) 4
 
-# Basic waveform shape (EV 1)
-# 0 : Square
-# 1 : Sinusoid
-# 2 : Custom (1 entry per volume)
-# 3 : Custom (3 column format)
-# 4 : Interaction
-# 10 : Empty (all zeros)
-set fmri(shape1) 0
+# Variance-normalise timecourses
+set fmri(varnorm) 1
 
-# Convolution (EV 1)
-# 0 : None
-# 1 : Gaussian
-# 2 : Gamma
-# 3 : Double-Gamma HRF
-# 4 : Gamma basis functions
-# 5 : Sine basis functions
-# 6 : FIR basis functions
-set fmri(convolve1) 2
+# Automatic dimensionality estimation
+set fmri(dim_yn) 1
 
-# Convolve phase (EV 1)
-set fmri(convolve_phase1) 0
+# Output components
+set fmri(dim) 1
 
-# Apply temporal filtering (EV 1)
-set fmri(tempfilt_yn1) 1
+# 1 : Single-session ICA
+# 2 : Multi-session temporal concatenation
+# 3 : Multi-session tensor TICA
+set fmri(icaopt) 3
 
-# Add temporal derivative (EV 1)
-set fmri(deriv_yn1) 1
+# Threshold IC maps
+set fmri(thresh_yn) 1
 
-# Skip (EV 1)
-set fmri(skip1) 0
+# Mixture model threshold
+set fmri(mmthresh) 0.5
 
-# Off (EV 1)
-set fmri(off1) 30
+# Output full stats folder
+set fmri(ostats) 0
 
-# On (EV 1)
-set fmri(on1) 30
+# Timeseries and subject models
+set fmri(ts_model_mat) ""
+set fmri(ts_model_con) ""
+set fmri(subject_model_mat) ""
+set fmri(subject_model_con) ""
 
-# Phase (EV 1)
-set fmri(phase1) 0
-
-# Stop (EV 1)
-set fmri(stop1) -1
-
-# Gamma sigma (EV 1)
-set fmri(gammasigma1) 3
-
-# Gamma delay (EV 1)
-set fmri(gammadelay1) 6
-
-# Orthogonalise EV 1 wrt EV 0
-set fmri(ortho1.0) 0
-
-# Orthogonalise EV 1 wrt EV 1
-set fmri(ortho1.1) 0
-
-# Contrast & F-tests mode
-# real : control real EVs
-# orig : control original EVs
-set fmri(con_mode_old) orig
-set fmri(con_mode) orig
-
-# Display images for contrast_real 1
-set fmri(conpic_real.1) 1
-
-# Title for contrast_real 1
-set fmri(conname_real.1) ""
-
-# Real contrast_real vector 1 element 1
-set fmri(con_real1.1) 1
-
-# Real contrast_real vector 1 element 2
-set fmri(con_real1.2) 0
-
-# Display images for contrast_orig 1
-set fmri(conpic_orig.1) 1
-
-# Title for contrast_orig 1
-set fmri(conname_orig.1) ""
-
-# Real contrast_orig vector 1 element 1
-set fmri(con_orig1.1) 1
-
-# Contrast masking - use >0 instead of thresholding?
-set fmri(conmask_zerothresh_yn) 0
-
-# Do contrast masking at all?
-set fmri(conmask1_1) 0
 
 ##########################################################
 # Now options that don't appear in the GUI
