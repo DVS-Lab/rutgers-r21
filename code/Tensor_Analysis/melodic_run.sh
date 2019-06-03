@@ -1,8 +1,8 @@
 cd ../..
 maindir=`pwd`
-datalist=${maindir}/concatonated_rest_files.txt
+datalist=${maindir}/zimages_all4stims.txt
 my_bg_image=${maindir}/derivatives/Tensor_ICA/bg_image.nii.gz
-my_ica_output=${maindir}/derivatives/Tensor_ICA/Tensor_output_background.ica
+my_ica_output=${maindir}/derivatives/Tensor_ICA/Tensor_output_stimsassession.ica
 
 echo ${maindir}
 echo ${datalist}
